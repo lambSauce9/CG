@@ -61,7 +61,7 @@ static GLuint CreateShader(const std::string& text, GLenum shaderType)
     return shader;
 }
 
-std::string Shader::LoadShader(const std::string& fileName)
+ std::string Shader::LoadShader(const std::string& fileName)
 {
     std::ifstream file;
     file.open((fileName).c_str());
