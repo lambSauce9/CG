@@ -15,7 +15,7 @@ public:
 protected:
 private:
 	static const unsigned int NUM_SHADERS = 2;
-	Shader(const Shader& other){}
+	Shader(const Shader& other) {}
 	void operator =(const Shader& other){}
 
 	std::string LoadShader(const std::string& fileName);

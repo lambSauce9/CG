@@ -15,7 +15,8 @@ Shader::Shader(const std::string& fileName)
     for (unsigned int i = 0; i < NUM_SHADERS; i++)
         glAttachShader(m_program, m_shaders[i]);
 
-    //glBindAttribLocation(m_program, 0, "position");
+    glBindAttribLocation(m_program, 0, "position");
+    glBindAttribLocation(m_program, 1, "texCoord");
 
     glLinkProgram(m_program);
     CheckShaderError(m_program, GL_LINK_STATUS, true, "Error: Program linking failed: ");
@@ -40,6 +41,15 @@ void Shader::Bind()
     glUseProgram(m_program);
 }
 
+void CheckShaderError(GLuint shader, GLuint flag, bool isProgram, const std::string& errorMessage)
+{
+}
+
+std::string LoadShader(const std::string& fileName)
+{
+    return std::string();
+}
+
 static GLuint CreateShader(const std::string& text, GLenum shaderType)
 {
     GLuint shader = glCreateShader(shaderType);
@@ -61,7 +71,7 @@ static GLuint CreateShader(const std::string& text, GLenum shaderType)
     return shader;
 }
 
- std::string Shader::LoadShader(const std::string& fileName)
+std::string Shader::LoadShader(const std::string& fileName)
 {
     std::ifstream file;
     file.open((fileName).c_str());
@@ -104,4 +114,9 @@ void Shader::CheckShaderError(GLuint shader, GLuint flag, bool isProgram, const 
 
         std::cerr << errorMessage << ": '" << error << "'" << std::endl;
     }
+}
+
+GLuint Shader::CreateShader(const std::string& text, unsigned int type)
+{
+    return GLuint();
 }
